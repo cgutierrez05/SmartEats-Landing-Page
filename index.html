@@ -1,0 +1,231 @@
+ <!DOCTYPE html>
+ <html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartEats-Landing</title>
+ </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <a href="#bienvenida" id="nav-left">SmartEats</a>
+
+        <!--Menu cuando la pantalla es muy pequena-->
+        <button>Menu</button>
+
+        <ul id="nav-center">
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#recetas">Recetas</a></li>
+          <li><a href="#informacion">Sobre Nosotros</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#registro">Únete a la Comunidad</a></li>
+        </ul>
+
+        <a href="#favoritos" id="nav-right">Mis recetas favoritas</a>
+      </nav>
+    </header>
+    <section id="bienvenida">
+      <div id="carousel">
+
+        <div class="carousel-item active">
+          <h1>Recupera tu energía. Optimiza tu día.</h1>
+          <p>SmartEats te ayuda a comer inteligentemente para que rindas al máximo, sin complicaciones.</p>
+          <a href="#beneficios" class="btn">Conocer Beneficios</a>
+        </div>
+
+        <div class="carousel-item">
+          <h1>Aumenta tu Productividad con una Alimentación Balanceada</h1>
+          <p>La nutrición adecuada es clave para mejorar tu enfoque y energía durante todo el día.</p>
+          <a href="#guia" class="btn">Ver planes</a>
+        </div>
+
+        <div class="carousel-item">
+          <h1>¡Transforma tu Día con Pequeños Cambios!</h1>
+          <p>Estudiantes y jóvenes trabajadores que cambiaron su alimentación y mejoraron su rendimiento.</p>
+          <a href="#testimonios" class="btn">Leer historias</a>
+        </div>
+
+        <div class="carousel-item">
+          <h1>Empieza Ahora a Comer Mejor</h1>
+          <p>Aquí encontrarás ideas fáciles y rápidas para comer bien, incluso en tus días más ocupados.</p>
+          <a href="#recetas" class="btn">Ver recetas</a>
+        </div>
+
+      </div>
+    </section>
+    <section id="beneficios">
+
+      <div class="heading_container">
+        <h2>¿Por qué SmartEats?</h2>
+        <p>Descubre cómo SmartEats transforma tu rutina diaria y potencia tu rendimiento.</p>
+      </div>
+
+      <div class="card-row">
+
+        <div class="benefit-card">
+          <div class="card-img-box">
+            <img src="images/beneficio-comer-frutas.webp" alt="Persona comiendo frutas con energía">
+          </div>
+          <div class="card-detail-box">
+            <h3>Adiós a los bajones de energía</h3>
+            <p>Mantén niveles de energía estables durante todo el día con planes de comida balanceados.</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="card-img-box">
+            <img src="images/comida-tuppers.avif" alt="Comida saludable en tuppers">
+          </div>
+          <div class="card-detail-box">
+            <h3>Comidas rápidas y saludables</h3>
+            <p>Soluciones prácticas y nutritivas diseñadas para personas con poco tiempo.</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="card-img-box">
+            <img src="images/recetas-saludables.webp" alt="Persona usando app de recetas">
+          </div>
+          <div class="card-detail-box">
+            <h3>Decisiones inteligentes, sin esfuerzo</h3>
+            <p>Te ayudamos a elegir las mejores opciones para tu cuerpo sin sacrificar sabor ni conveniencia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- food section -->
+    <section id="recetas">
+      <div class="heading_container"></div>
+        <h2>Algunas de nuestras comidas</h2>
+        <p>Platillos deliciosos, nutritivos y fáciles de preparar para tu día a día.</p>
+      </div>
+
+      <!-- Llenar con JS -->
+      <div class="filters">
+          <button class="filter-btn active" data-filter="healthy">Populares</button>
+          <button class="filter-btn" data-filter="salad">Ensaladas</button>
+          <button class="filter-btn" data-filter="wrap">Wraps</button>
+          <button class="filter-btn" data-filter="breakfast">Desayunos</button>
+          <button class="filter-btn" data-filter="snack">Snacks</button>  
+      </div>
+      <div class="recipe-grid">
+        <!--Se llena con las recetas de la api-->
+      </div>
+    </section>
+    <!-- end food section -->
+
+    <section id="informacion">
+      <div>
+        <img src="images/aboutus-removebg-preview.png" alt="Ensalada cayendo en bowl">
+        <h2>Sobre SmartEats</h2>
+        <p>SmartEats es una organización que nació de una idea simple: comer bien es la base de un alto rendimiento. Entendemos los desafíos de la vida estudiantil y laboral moderna, donde el tiempo es escaso y la energía es vital. Nuestra misión es hacer que la nutrición inteligente sea accesible, rápida y deliciosa, dándote las herramientas para que rindas al máximo cada día, sin complicaciones.</p>
+      </div>
+    </section>
+    <!-- end about section -->
+
+
+
+    <!-- client section -->
+    <section id="testimonios">
+      <div class="heading_container">
+        <h2>Lo que dicen nuestros usuarios</h2>
+        <p>Historias reales de personas que transformaron su energía con SmartEats.</p>
+      </div>
+
+      <div>
+        <div>
+          <p>"Finalmente entiendo qué comer para no tener sueño después de almorzar. La guía es un salvavidas. ¡Totalmente recomendado!"</p>
+          <h6>Sofía Rodriguez</h6>
+          <p>Joven Profesional</p>
+          <img src="images/client1.jpg" alt="Client Image">
+        </div>
+
+        <div>
+          <p>"¡Increíble! Pasé de arrastrarme por las tardes a sentirme lleno de energía. Las recetas son deliciosas y súper fáciles de preparar, incluso con mi horario de locos."</p>
+          <h6>Ana Gonzales</h6>
+          <p>Joven Profesional</p>
+          <img src="images/client1.jpg" alt="Client Image">
+        </div>
+
+        <div>
+          <p>"Como estudiante, vivía a base de café y comida chatarra. SmartEats me enseñó a comer bien sin gastar mucho tiempo ni dinero. Mi concentración en clase ha mejorado un montón."</p>
+          <h6>Carlos Mendoza</h6>
+          <p>Estudiante Universitario</p>
+          <img src="images/client1.jpg" alt="Client Image">
+        </div>
+        <!-- More client testimonials here -->
+      </div>
+    </section>
+    <!-- end client section -->
+
+
+    <!-- book section -->
+    <section id="registro" class="registro-section">
+
+      <div class="heading_container">
+        <h2>Únete a la Comunidad</h2>
+        <p>Regístrate en nuestra comunidad y obtén tu Guía Gratuita para optimizar tu energía en 7 días.</p>
+      </div>
+
+      <div class="registro-container">
+
+        <div class="form-container">
+          <form id="registro-form">
+            
+            <div>
+              <label for="nombre">Tu Nombre:</label>
+              <input type="text" id="nombre" placeholder="Ej: Alex Smith" required />
+            </div>
+            
+            <div>
+              <label for="email">Tu Email:</label>
+              <input type="email" id="email" placeholder="ejemplo@correo.com" required />
+            </div>
+            
+            <div>
+              <label for="objetivo">¿Cuál es tu objetivo principal?</label>
+              <select id="objetivo" required>
+                <option value="" disabled selected>Selecciona una opción...</option>
+                <option value="energia">Aumentar mi energía</option>
+                <option value="tiempo">Comer sano sin perder tiempo</option>
+                <option value="productividad">Mejorar mi productividad</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            
+            <div class="btn-box">
+              <button type="submit" id="submit-btn">
+                ¡Unirme ahora!
+              </button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- end book section -->
+
+    <!-- favorites section -->
+    <section id="favoritos">
+
+      <div class="heading_container">
+        <h2>Mis Recetas Favoritas</h2>
+        <p>Las recetas que has guardado. ¡Vuelve a ellas cuando quieras!</p>
+      </div>
+
+      <div id="favoritos-grid" class="recipe-grid">
+      </div>
+    </section>
+    <!-- end favorites section -->
+
+
+    <!-- footer section -->
+    <footer>
+      <p>&copy; 2025 All Rights Reserved By <a href="https://www.linkedin.com/in/carla-gutierrez-a70b15252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Carla Gutierrez</a></p>
+    </footer>
+    <!-- end footer section -->
+
+    <script src="js/file.js" type="module"></script>
+  </body>
+</html> 
