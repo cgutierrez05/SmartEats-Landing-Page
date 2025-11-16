@@ -1,5 +1,12 @@
-const fetchRecetas = async (url) => {
+const fetchRecetas = async (filtro) => {
     try {
+
+        const API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
+        const maxReadyTime = 20;
+        const number = 21;
+        const sort = 'healthiness';
+
+        const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${filtro}&sort=${sort}&number=${number}&maxReadyTime=${maxReadyTime}&addRecipeInformation=true`;
         const response = await fetch(url);
 
         if (!response.ok) {

@@ -1,4 +1,4 @@
-import { fetchRecetas } from './functions';
+import { fetchRecetas } from './functions.js';
 
 const cargarRecetas = (recetasArray, contenedor) => {
     contenedor.innerHTML = "";
@@ -15,7 +15,8 @@ const cargarRecetas = (recetasArray, contenedor) => {
               </div>
               <div class="card-detail-box">
                   <h3>${receta.title}</h3>
-                  <p>Tiempo: ${receta.readyInMinutes} min</p>
+                  <p>${receta.summary} min</p>
+                  <p>Tiempo de preparación: ${receta.readyInMinutes} min</p>
                   <a href="${receta.sourceUrl}" target="_blank" class="view-recipe-btn">Ver Receta</a>
               </div>
             </div>
@@ -26,7 +27,7 @@ const cargarRecetas = (recetasArray, contenedor) => {
 
 const CargarYFiltrar = async (filtro, contenedor) => {
     contenedor.innerHTML = `<p>Buscando recetas de ${filtro}...</p>`;
-    const respuesta = await fetchRecetas(`/api/recetas?filtro=${filtro}`);
+    const respuesta = await fetchRecetas(filtro);
 
     if (respuesta.success) {
         cargarRecetas(respuesta.body.results, contenedor);
