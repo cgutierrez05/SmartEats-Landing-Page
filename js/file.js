@@ -162,3 +162,19 @@ const cargarFavoritosUI = async () => {
 document.addEventListener("DOMContentLoaded", () => {
     cargarFavoritosUI();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const navMenu = document.getElementById("menu-pequeno");
+    if (menuBtn && navMenu) {
+        menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
+        });
+    }
+
+    navMenu.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+        navMenu.classList.add("hidden");
+      }
+    });
+});

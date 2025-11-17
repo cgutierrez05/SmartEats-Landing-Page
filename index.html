@@ -16,11 +16,13 @@
           <span>SmartEats</span>
         </a>
 
-        <!--Menu cuando la pantalla es muy pequena-->
-        <button class="md:hidden border border-white/40 px-3 py-1 rounded-full text-sm">
+        <!-- Botón menu para pantallas pequenias -->
+        <button id="menu-btn"
+                class="md:hidden border border-white/40 px-3 py-1 rounded-full text-sm">
           Menu
         </button>
 
+        <!-- MENU ESCRITORIO -->
         <ul id="nav-center" class="hidden md:flex gap-8 text-sm">
           <li><a href="#beneficios" class="hover:text-emerald-300">Beneficios</a></li>
           <li><a href="#recetas" class="hover:text-emerald-300">Recetas</a></li>
@@ -30,8 +32,20 @@
         </ul>
 
         <a href="#favoritos" id="nav-right"
-        class="hidden md:inline-block bg-emerald-400 text-slate-900 font-semibold px-4 py-2 rounded-full text-sm hover:bg-emerald-300 transition">
-        Mis recetas favoritas</a>
+          class="hidden md:inline-block bg-emerald-400 text-slate-900 font-semibold px-4 py-2 rounded-full text-sm hover:bg-emerald-300 transition">
+          Mis recetas favoritas
+        </a>
+
+        <!-- MENU MÓVIL DESPLEGABLE -->
+        <div id="menu-pequeno"
+            class="md:hidden mobile-menu hidden flex flex-col gap-3 bg-slate-900/95 text-white px-6 py-4 border-t border-slate-800">
+          <a href="#beneficios" class="py-1 hover:text-emerald-300">Beneficios</a>
+          <a href="#recetas" class="py-1 hover:text-emerald-300">Recetas</a>
+          <a href="#informacion" class="py-1 hover:text-emerald-300">Sobre Nosotros</a>
+          <a href="#testimonios" class="py-1 hover:text-emerald-300">Testimonios</a>
+          <a href="#registro" class="py-1 hover:text-emerald-300">Únete a la Comunidad</a>
+        </div>
+
       </nav>
     </header>
 
