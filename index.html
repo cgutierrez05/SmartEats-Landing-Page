@@ -159,22 +159,30 @@
     </section>
 
     <!-- food section -->
-    <section id="recetas">
-      <div class="heading_container">
-        <h2>Algunas de nuestras comidas</h2>
-        <p>Platillos deliciosos, nutritivos y fáciles de preparar para tu día a día.</p>
-      </div>
+    <section id="recetas" class="bg-slate-50 py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="heading_container text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
+            Algunas de nuestras comidas
+          </h2>
+          <p class="text-slate-600">
+            Platillos deliciosos, nutritivos y fáciles de preparar para tu día a día.
+          </p>
+        </div>
 
-      <!-- Llenar con JS -->
-      <div class="filters">
-          <button class="filter-btn active" data-filter="healthy">Todo</button>
+        <!-- Filtros -->
+        <div class="filters mb-10">
+          <button class="filter-btn active" data-filter="healthy">Populares</button>
           <button class="filter-btn" data-filter="salad">Ensaladas</button>
           <button class="filter-btn" data-filter="wrap">Wraps</button>
           <button class="filter-btn" data-filter="breakfast">Desayunos</button>
-          <button class="filter-btn" data-filter="snack">Snacks</button>  
-      </div>
-      <div class="recipe-grid">
-        <!--Se llena con las recetas de la api-->
+          <button class="filter-btn" data-filter="snack">Snacks</button>
+        </div>
+
+        <!-- Grid de recetas -->
+        <div class="recipe-grid">
+          <!-- Se llena con las recetas de la API -->
+        </div>
       </div>
     </section>
     <!-- end food section -->

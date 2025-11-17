@@ -4,22 +4,35 @@ const cargarRecetas = (recetasArray, contenedor) => {
     contenedor.innerHTML = "";
 
     if (!recetasArray || recetasArray.length === 0) {
-        contenedor.innerHTML = "<p>No se encontraron recetas con ese criterio.</p>";
-        return;}
+        contenedor.innerHTML = `<p class="text-center text-slate-500 col-span-full">
+        No se encontraron recetas con ese criterio.</p>`;
+        return;
+    }
 
     recetasArray.forEach(receta => {
-        const recipeCard = `
-            <div class="recipe-card">
-              <div class="card-img-box">
-                  <img src="${receta.image}" alt="${receta.title}">
-              </div>
-              <div class="card-detail-box">
-                  <h3>${receta.title}</h3>
-                  <p>Tiempo de preparación: ${receta.readyInMinutes} min</p>
-                  <a href="${receta.sourceUrl}" target="_blank" class="view-recipe-btn">Ver Receta</a>
-              </div>
+        const recipeCard =  `
+        <article class="recipe-card">
+            <div class="card-img-box">
+                <img src="${receta.image}" alt="${receta.title}">
             </div>
-        `;
+
+            <div class="card-detail-box">
+                <h3>${receta.title}</h3>
+                <p class="recipe-time">
+                    ⏱ ${receta.readyInMinutes} min
+                </p>
+
+                <div class="recipe-actions">
+                    <a href="${receta.sourceUrl}" target="_blank" class="view-recipe-btn">
+                        Ver receta
+                    </a>
+
+                    <button class="fav-btn" data-recipe-id="${receta.id}">
+                        + Favoritos
+                    </button>
+                </div>
+            </div>
+        </article>`;
         contenedor.innerHTML += recipeCard;
     });
 }
@@ -49,4 +62,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })
     CargarYFiltrar("healthy", recipeGrid);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".carousel-item");
+  const dots = document.querySelectorAll(".carousel-dot");
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+
+      // Quitar active de todas las slides y puntos
+      slides.forEach(slide => slide.classList.remove("active"));
+      dots.forEach(d => d.classList.remove("active"));
+
+      // Activar slide y punto clickeado
+      slides[index].classList.add("active");
+      dot.classList.add("active");
+    });
+  });
 });
