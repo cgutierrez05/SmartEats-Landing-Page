@@ -15,7 +15,6 @@ const cargarRecetas = (recetasArray, contenedor) => {
               </div>
               <div class="card-detail-box">
                   <h3>${receta.title}</h3>
-                  <p>${receta.summary} min</p>
                   <p>Tiempo de preparación: ${receta.readyInMinutes} min</p>
                   <a href="${receta.sourceUrl}" target="_blank" class="view-recipe-btn">Ver Receta</a>
               </div>

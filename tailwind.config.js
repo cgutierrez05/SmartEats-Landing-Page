@@ -11,6 +11,7 @@ module.exports = {
         'primary': '#00BFA6',    // Verde Menta
         'dark': '#1A202C',       // Azul Noche  
         'light': '#F7F9FA',      // Gris Niebla
+        'yellow-bg': '#F7C622'   // Amarillo Gorda
         'text-light': '#E2E8F0', // Texto blanco suave
         'text-dark': '#333333',  // Texto gris oscuro
       },

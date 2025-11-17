@@ -3,92 +3,156 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
   <title>SmartEats-Landing</title>
+  
  </head>
-  <body>
-    <header>
-      <nav id="navbar">
-        <a href="#bienvenida" id="nav-left">SmartEats</a>
+  <body class="bg-slate-900 text-white">
+    <header class="fixed top-0 left-0 w-full z-50 bg-slate-900/70">
+      <nav id="navbar" class="flex items-center justify-between px-4 md:px-10 py-4 text-white">
+        <a href="#bienvenida" id="nav-left" class="flex items-center gap-2 text-xl font-semibold">
+          <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+          <span>SmartEats</span>
+        </a>
 
         <!--Menu cuando la pantalla es muy pequena-->
-        <button>Menu</button>
+        <button class="md:hidden border border-white/40 px-3 py-1 rounded-full text-sm">
+          Menu
+        </button>
 
-        <ul id="nav-center">
-          <li><a href="#beneficios">Beneficios</a></li>
-          <li><a href="#recetas">Recetas</a></li>
-          <li><a href="#informacion">Sobre Nosotros</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#registro">Únete a la Comunidad</a></li>
+        <ul id="nav-center" class="hidden md:flex gap-8 text-sm">
+          <li><a href="#beneficios" class="hover:text-emerald-300">Beneficios</a></li>
+          <li><a href="#recetas" class="hover:text-emerald-300">Recetas</a></li>
+          <li><a href="#informacion" class="hover:text-emerald-300">Sobre Nosotros</a></li>
+          <li><a href="#testimonios" class="hover:text-emerald-300">Testimonios</a></li>
+          <li><a href="#registro" class="hover:text-emerald-300">Únete a la Comunidad</a></li>
         </ul>
 
-        <a href="#favoritos" id="nav-right">Mis recetas favoritas</a>
+        <a href="#favoritos" id="nav-right"
+        class="hidden md:inline-block bg-emerald-400 text-slate-900 font-semibold px-4 py-2 rounded-full text-sm hover:bg-emerald-300 transition">
+        Mis recetas favoritas</a>
       </nav>
     </header>
-    <section id="bienvenida" class="h-screen flex items-center justify-center">
-      <div id="carousel">
 
-        <div class="carousel-item active">
-          <h1>Recupera tu energía. Optimiza tu día.</h1>
-          <p>SmartEats te ayuda a comer inteligentemente para que rindas al máximo, sin complicaciones.</p>
-          <a href="#beneficios" class="btn">Conocer Beneficios</a>
+    <section id="bienvenida" class="relative flex items-center min-h-screen">
+      <div class="relative z-10 w-full max-w-4xl pl-6 pr-6 md:pl-16 md:pr-0">
+        <div id="carousel">
+          <div class="carousel-item active space-y-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-left">
+              Recupera tu energía.<br>Optimiza tu día.
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-white/90 text-left">
+              SmartEats te ayuda a comer inteligentemente para que rindas al máximo, sin complicaciones.
+            </p>
+            <a href="#beneficios"
+              class="inline-block bg-emerald-400 text-slate-900 font-semibold px-6 py-3 rounded-md hover:bg-emerald-300 transition">
+              Descubre Más
+            </a>
+          </div>
+
+          <div class="carousel-item space-y-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-left">
+              Aumenta tu productividad con una alimentación balanceada.
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-white/90 text-left">
+              La nutrición adecuada es clave para mejorar tu enfoque y energía durante todo el día.
+            </p>
+            <a href="#registro"
+              class="inline-block bg-emerald-400 text-slate-900 font-semibold px-6 py-3 rounded-md hover:bg-emerald-300 transition">
+              Ver comunidad
+            </a>
+          </div>
+
+          <div class="carousel-item space-y-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-left">
+              ¡Transforma tu día con pequeños cambios!
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-white/90 text-left">
+              Estudiantes y jóvenes trabajadores que cambiaron su alimentación y mejoraron su rendimiento.
+            </p>
+            <a href="#testimonios"
+              class="inline-block bg-emerald-400 text-slate-900 font-semibold px-6 py-3 rounded-md hover:bg-emerald-300 transition">
+              Leer historias
+            </a>
+          </div>
+
+          <div class="carousel-item space-y-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-left">
+              Empieza ahora a comer mejor.
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-white/90 text-left">
+              Aquí encontrarás ideas fáciles y rápidas para comer bien, incluso en tus días más ocupados.
+            </p>
+            <a href="#recetas"
+              class="inline-block bg-emerald-400 text-slate-900 font-semibold px-6 py-3 rounded-md hover:bg-emerald-300 transition">
+              Ver recetas
+            </a>
+          </div>
         </div>
 
-        <div class="carousel-item">
-          <h1>Aumenta tu Productividad con una Alimentación Balanceada</h1>
-          <p>La nutrición adecuada es clave para mejorar tu enfoque y energía durante todo el día.</p>
-          <a href="#guia" class="btn">Ver planes</a>
+        <!-- PUNTITOS DEL CARRUSEL -->
+        <div class="mt-10 flex items-center gap-3">
+          <button class="carousel-dot active"></button>
+          <button class="carousel-dot"></button>
+          <button class="carousel-dot"></button>
+          <button class="carousel-dot"></button>
         </div>
-
-        <div class="carousel-item">
-          <h1>¡Transforma tu Día con Pequeños Cambios!</h1>
-          <p>Estudiantes y jóvenes trabajadores que cambiaron su alimentación y mejoraron su rendimiento.</p>
-          <a href="#testimonios" class="btn">Leer historias</a>
-        </div>
-
-        <div class="carousel-item">
-          <h1>Empieza Ahora a Comer Mejor</h1>
-          <p>Aquí encontrarás ideas fáciles y rápidas para comer bien, incluso en tus días más ocupados.</p>
-          <a href="#recetas" class="btn">Ver recetas</a>
-        </div>
-
       </div>
     </section>
-    <section id="beneficios">
 
-      <div class="heading_container">
-        <h2>¿Por qué SmartEats?</h2>
-        <p>Descubre cómo SmartEats transforma tu rutina diaria y potencia tu rendimiento.</p>
+    <section id="beneficios" class="bg-white py-16">
+
+      <div class="heading_container text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-3 tracking-tight font-serif">
+          ¿Por qué SmartEats?
+        </h2>
+        <p class="text-slate-600 max-w-2xl mx-auto">
+          Descubre cómo SmartEats transforma tu rutina diaria y potencia tu rendimiento.
+        </p>
       </div>
 
-      <div class="card-row">
+      <div class="card-row max-w-6xl mx-auto px-6 grid gap-8 md:grid-cols-3">
 
-        <div class="benefit-card">
-          <div class="card-img-box">
-            <img src="images/beneficio-comer-frutas.webp" alt="Persona comiendo frutas con energía">
+        <div class="benefit-card bg-slate-900 text-white rounded-[2rem] py-10 px-6 shadow-lg flex flex-col items-center">
+          <div class="card-img-box w-24 h-24 rounded-full overflow-hidden border-4 border-white mb-6">
+            <img src="images/beneficio-comer-frutas.webp" alt="Persona comiendo frutas con energía" class="w-full h-full object-cover">
           </div>
-          <div class="card-detail-box">
-            <h3>Adiós a los bajones de energía</h3>
-            <p>Mantén niveles de energía estables durante todo el día con planes de comida balanceados.</p>
+          <div class="card-detail-box text-center space-y-4">
+            <h3 class="text-xl md:text-2xl font-semibold leading-snug">
+              Adiós a los bajones de energía
+            </h3>
+            <p class="text-base md:text-lg text-slate-200/90 leading-relaxed">
+              Mantén niveles de energía estables durante todo el día con planes de comida balanceados.
+            </p>
           </div>
         </div>
 
-        <div class="benefit-card">
-          <div class="card-img-box">
-            <img src="images/comida-tuppers.avif" alt="Comida saludable en tuppers">
+        <div class="benefit-card bg-slate-900 text-white rounded-[2rem] py-10 px-6 shadow-lg flex flex-col items-center">
+          <div class="card-img-box w-24 h-24 rounded-full overflow-hidden border-4 border-white mb-6">
+            <img src="images/comida-tuppers.avif"
+                alt="Comida saludable en tuppers"
+                class="w-full h-full object-cover">
           </div>
-          <div class="card-detail-box">
-            <h3>Comidas rápidas y saludables</h3>
-            <p>Soluciones prácticas y nutritivas diseñadas para personas con poco tiempo.</p>
+          <div class="card-detail-box text-center space-y-4">
+            <h3 class="text-xl md:text-2xl font-semibold leading-snug">Comidas rápidas y saludables</h3>
+            <p class="text-base md:text-lg text-slate-200/90 leading-relaxed">
+              Soluciones prácticas y nutritivas diseñadas para personas con poco tiempo.
+            </p>
           </div>
         </div>
 
-        <div class="benefit-card">
-          <div class="card-img-box">
-            <img src="images/recetas-saludables.webp" alt="Persona usando app de recetas">
+        <div class="benefit-card bg-slate-900 text-white rounded-[2rem] py-10 px-6 shadow-lg flex flex-col items-center">
+          <div class="card-img-box w-24 h-24 rounded-full overflow-hidden border-4 border-white mb-6">
+            <img src="images/recetas-saludables.webp"
+                alt="Persona usando app de recetas"
+                class="w-full h-full object-cover">
           </div>
-          <div class="card-detail-box">
-            <h3>Decisiones inteligentes, sin esfuerzo</h3>
-            <p>Te ayudamos a elegir las mejores opciones para tu cuerpo sin sacrificar sabor ni conveniencia.</p>
+          <div class="card-detail-box text-center space-y-4">
+            <h3 class="text-xl md:text-2xl font-semibold leading-snug">Decisiones inteligentes, sin esfuerzo</h3>
+            <p class="text-base md:text-lg text-slate-200/90 leading-relaxed">
+              Te ayudamos a elegir las mejores opciones para tu cuerpo sin sacrificar sabor ni conveniencia.
+            </p>
           </div>
         </div>
       </div>
@@ -96,14 +160,14 @@
 
     <!-- food section -->
     <section id="recetas">
-      <div class="heading_container"></div>
+      <div class="heading_container">
         <h2>Algunas de nuestras comidas</h2>
         <p>Platillos deliciosos, nutritivos y fáciles de preparar para tu día a día.</p>
       </div>
 
       <!-- Llenar con JS -->
       <div class="filters">
-          <button class="filter-btn active" data-filter="healthy">Populares</button>
+          <button class="filter-btn active" data-filter="healthy">Todo</button>
           <button class="filter-btn" data-filter="salad">Ensaladas</button>
           <button class="filter-btn" data-filter="wrap">Wraps</button>
           <button class="filter-btn" data-filter="breakfast">Desayunos</button>
@@ -115,96 +179,187 @@
     </section>
     <!-- end food section -->
 
-    <section id="informacion">
-      <div>
-        <img src="images/aboutus-removebg-preview.png" alt="Ensalada cayendo en bowl">
-        <h2>Sobre SmartEats</h2>
-        <p>SmartEats es una organización que nació de una idea simple: comer bien es la base de un alto rendimiento. Entendemos los desafíos de la vida estudiantil y laboral moderna, donde el tiempo es escaso y la energía es vital. Nuestra misión es hacer que la nutrición inteligente sea accesible, rápida y deliciosa, dándote las herramientas para que rindas al máximo cada día, sin complicaciones.</p>
+    <section id="informacion" class="py-20">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+        <div class="w-full md:w-1/2 flex justify-center">
+          <img
+            src="images/aboutus-removebg-preview.png"
+            alt="Ensalada cayendo en bowl"
+            class="w-64 md:w-80 lg:w-96 object-contain drop-shadow-2xl"
+          >
+        </div>
+
+        <div class="w-full md:w-1/2 text-center md:text-left text-white space-y-5">
+          <h2 class="text-3xl md:text-4xl font-semibold text-emerald-300 italic">
+            Sobre SmartEats
+          </h2>
+          <p class="text-base md:text-lg text-slate-100/90 leading-relaxed">
+            SmartEats es una organización que nació de una idea simple: comer bien es la base de un alto rendimiento.
+            Entendemos los desafíos de la vida estudiantil y laboral moderna, donde el tiempo es escaso y la energía es vital.
+            Nuestra misión es hacer que la nutrición inteligente sea accesible, rápida y deliciosa, dándote las herramientas
+            para que rindas al máximo cada día, sin complicaciones.
+          </p>
+        </div>
       </div>
     </section>
+
     <!-- end about section -->
 
+    <section id="testimonios" class="bg-white py-20">
+
+      <div class="max-w-6xl mx-auto px-6">
+
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-slate-900 mb-3">
+            Lo que dicen nuestros usuarios
+          </h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            Historias reales de personas que transformaron su energía con SmartEats.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div class="relative bg-white border border-slate-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow">
+
+            <!-- Comilla decorativa -->
+            <span class="absolute -top-6 left-4 text-emerald-300 text-[110px] font-serif opacity-20 leading-none select-none">
+              “
+            </span>
+            <p class="text-slate-700 italic relative z-10 mb-6">
+              "Finalmente entiendo qué comer para no tener sueño después de almorzar. La guía es un salvavidas. ¡Totalmente recomendado!"
+            </p>
+
+            <div class="flex items-center gap-4 relative z-10">
+              <img src="images/mujer-de-negocios-morena-con-cabello-largo-ondulado-y-ojos-azules-esta-sosteniendo-un-cuaderno-en-las-manos.jpg" class="w-14 h-14 rounded-full object-cover ring-2 ring-emerald-300" />
+              <div>
+                <h6 class="font-semibold text-slate-900 text-lg">Sofía Rodriguez</h6>
+                <p class="text-slate-500 text-sm">Joven Profesional</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative bg-white border border-slate-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow">
+
+            <span class="absolute -top-6 left-4 text-emerald-300 text-[110px] font-serif opacity-20 leading-none select-none">
+              “
+            </span>
+
+            <p class="text-slate-700 italic relative z-10 mb-6">
+              "¡Increíble! Pasé de arrastrarme por las tardes a sentirme llena de energía. Las recetas son deliciosas y súper fáciles de preparar."
+            </p>
+
+            <div class="flex items-center gap-4 relative z-10">
+              <img src="images/adulto-joven-tenencia-ella-cuaderno.jpg" class="w-14 h-14 rounded-full object-cover ring-2 ring-emerald-300" />
+              <div>
+                <h6 class="font-semibold text-slate-900 text-lg">Ana Gonzales</h6>
+                <p class="text-slate-500 text-sm">Joven Profesional</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative bg-white border border-slate-200 rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow">
+
+            <span class="absolute -top-6 left-4 text-emerald-300 text-[110px] font-serif opacity-20 leading-none select-none">
+              “
+            </span>
+
+            <p class="text-slate-700 italic relative z-10 mb-6">
+              "Como estudiante, vivía a base de café. SmartEats me enseñó a comer bien sin gastar mucho tiempo ni dinero. Mi concentración ha mejorado muchísimo."
+            </p>
+
+            <div class="flex items-center gap-4 relative z-10">
+              <img src="images/universitario.jpg" class="w-14 h-14 rounded-full object-cover ring-2 ring-emerald-300" />
+              <div>
+                <h6 class="font-semibold text-slate-900 text-lg">Carlos Mendoza</h6>
+                <p class="text-slate-500 text-sm">Estudiante Universitario</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
 
 
-    <!-- client section -->
-    <section id="testimonios">
-      <div class="heading_container">
-        <h2>Lo que dicen nuestros usuarios</h2>
-        <p>Historias reales de personas que transformaron su energía con SmartEats.</p>
+
+<section id="registro" class="bg-slate-900 py-24">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-emerald-300 mb-4">
+        Únete a la Comunidad
+      </h2>
+      <p class="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+        Regístrate y recibe tu Guía Gratuita para optimizar tu energía en 7 días.
+        Consejos prácticos, recetas rápidas y hábitos inteligentes para tu día a día.
+      </p>
+    </div>
+
+    <form id="registro-form"
+          class="bg-white rounded-3xl shadow-2xl border border-slate-200 px-8 py-10 md:px-12 md:py-12 space-y-8">
+
+      <div>
+        <label for="nombre" class="block text-sm font-semibold text-slate-700 mb-2">
+          Tu Nombre
+        </label>
+        <input
+          type="text"
+          id="nombre"
+          placeholder="Ej: Alex Smith"
+          required
+          class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900
+                 placeholder-slate-400 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
+        />
       </div>
 
       <div>
-        <div>
-          <p>"Finalmente entiendo qué comer para no tener sueño después de almorzar. La guía es un salvavidas. ¡Totalmente recomendado!"</p>
-          <h6>Sofía Rodriguez</h6>
-          <p>Joven Profesional</p>
-          <img src="images/client1.jpg" alt="Client Image">
-        </div>
-
-        <div>
-          <p>"¡Increíble! Pasé de arrastrarme por las tardes a sentirme lleno de energía. Las recetas son deliciosas y súper fáciles de preparar, incluso con mi horario de locos."</p>
-          <h6>Ana Gonzales</h6>
-          <p>Joven Profesional</p>
-          <img src="images/client1.jpg" alt="Client Image">
-        </div>
-
-        <div>
-          <p>"Como estudiante, vivía a base de café y comida chatarra. SmartEats me enseñó a comer bien sin gastar mucho tiempo ni dinero. Mi concentración en clase ha mejorado un montón."</p>
-          <h6>Carlos Mendoza</h6>
-          <p>Estudiante Universitario</p>
-          <img src="images/client1.jpg" alt="Client Image">
-        </div>
-        <!-- More client testimonials here -->
-      </div>
-    </section>
-    <!-- end client section -->
-
-
-    <!-- book section -->
-    <section id="registro" class="registro-section">
-
-      <div class="heading_container">
-        <h2>Únete a la Comunidad</h2>
-        <p>Regístrate en nuestra comunidad y obtén tu Guía Gratuita para optimizar tu energía en 7 días.</p>
+        <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">
+          Tu Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="ejemplo@correo.com"
+          required
+          class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900
+                 placeholder-slate-400 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
+        />
       </div>
 
-      <div class="registro-container">
-
-        <div class="form-container">
-          <form id="registro-form">
-            
-            <div>
-              <label for="nombre">Tu Nombre:</label>
-              <input type="text" id="nombre" placeholder="Ej: Alex Smith" required />
-            </div>
-            
-            <div>
-              <label for="email">Tu Email:</label>
-              <input type="email" id="email" placeholder="ejemplo@correo.com" required />
-            </div>
-            
-            <div>
-              <label for="objetivo">¿Cuál es tu objetivo principal?</label>
-              <select id="objetivo" required>
-                <option value="" disabled selected>Selecciona una opción...</option>
-                <option value="energia">Aumentar mi energía</option>
-                <option value="tiempo">Comer sano sin perder tiempo</option>
-                <option value="productividad">Mejorar mi productividad</option>
-                <option value="otro">Otro</option>
-              </select>
-            </div>
-            
-            <div class="btn-box">
-              <button type="submit" id="submit-btn">
-                ¡Unirme ahora!
-              </button>
-            </div>
-            
-          </form>
-        </div>
+      <div>
+        <label for="objetivo" class="block text-sm font-semibold text-slate-700 mb-2">
+          ¿Cuál es tu objetivo principal?
+        </label>
+        <select
+          id="objetivo"
+          required
+          class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 bg-white
+                 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
+        >
+          <option disabled selected>Selecciona una opción...</option>
+          <option value="energia">Aumentar mi energía</option>
+          <option value="tiempo">Comer sano sin perder tiempo</option>
+          <option value="productividad">Mejorar mi productividad</option>
+          <option value="otro">Otro</option>
+        </select>
       </div>
-    </section>
-    <!-- end book section -->
+
+      <div class="pt-4 flex flex-col items-center">
+        <button type="submit" id="boton-enviar"
+                class="bg-emerald-400 text-slate-900 font-semibold px-10 py-4 rounded-full
+                       hover:bg-emerald-300 transition shadow-md hover:shadow-xl text-lg tracking-wide">
+          ¡Unirme ahora!
+        </button>
+        <p class="text-xs text-slate-600 mt-3 text-center max-w-sm">
+          Solo contenido útil. Sin spam, lo prometemos ✨
+        </p>
+      </div>
+
+    </form>
+  </div>
+</section>
+
 
     <!-- favorites section -->
     <section id="favoritos">
