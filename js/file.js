@@ -71,11 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
 
-      // Quitar active de todas las slides y puntos
       slides.forEach(slide => slide.classList.remove("active"));
       dots.forEach(d => d.classList.remove("active"));
 
-      // Activar slide y punto clickeado
       slides[index].classList.add("active");
       dot.classList.add("active");
     });
