@@ -1,4 +1,16 @@
 import { fetchRecetas } from './functions.js';
+import { guardarRegistro, guardarFavorito, obtenerFavoritos } from "./firebase.js";
+
+const getOrCreateUserId = () => {
+    let id = localStorage.getItem("smarteatsUserId");
+    if (!id) {
+        id = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+        localStorage.setItem("smarteatsUserId", id);
+    }
+    return id;
+};
+
+const USER_ID = getOrCreateUserId();
 
 const cargarRecetas = (recetasArray, contenedor) => {
     contenedor.innerHTML = "";
@@ -27,7 +39,8 @@ const cargarRecetas = (recetasArray, contenedor) => {
                         Ver receta
                     </a>
 
-                    <button class="fav-btn" data-recipe-id="${receta.id}">
+                    <button class="fav-btn" data-id="${receta.id}" data-title="${receta.title}"
+                    data-image="${receta.image}" data-minutes="${receta.readyInMinutes}" data-url="${receta.sourceUrl}">
                         + Favoritos
                     </button>
                 </div>
@@ -35,7 +48,7 @@ const cargarRecetas = (recetasArray, contenedor) => {
         </article>`;
         contenedor.innerHTML += recipeCard;
     });
-}
+};
 
 const CargarYFiltrar = async (filtro, contenedor) => {
     contenedor.innerHTML = `<p>Buscando recetas de ${filtro}...</p>`;
@@ -46,7 +59,7 @@ const CargarYFiltrar = async (filtro, contenedor) => {
     } else {
         contenedor.innerHTML = `<p>Error al cargar: ${respuesta.body}</p>`;
     }
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     const recipeGrid = document.querySelector("#recetas .recipe-grid");
@@ -62,7 +75,35 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     })
     CargarYFiltrar("healthy", recipeGrid);
+    
 });
+
+const recipeGrid = document.querySelector("#recetas .recipe-grid");
+
+if (recipeGrid) {
+  recipeGrid.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".fav-btn");
+    if (!btn) return;
+
+    const recipe = {
+      id: btn.dataset.id,
+      title: btn.dataset.title,
+      image: btn.dataset.image,
+      readyInMinutes: Number(btn.dataset.minutes),
+      sourceUrl: btn.dataset.url,
+    };
+
+    try {
+      await guardarFavorito(USER_ID, recipe);
+      btn.textContent = "Guardado";
+      btn.disabled = true;
+    } catch (error) {
+      console.error("Error al guardar favorito:", error);
+      alert("No se pudo guardar en favoritos. Intenta de nuevo.");
+    }
+  });
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".carousel-item");
@@ -78,4 +119,46 @@ document.addEventListener("DOMContentLoaded", () => {
       dot.classList.add("active");
     });
   });
+
+  const registroForm = document.getElementById("registro-form");
+  if (registroForm) {
+    registroForm.addEventListener("submit", async (e) => {
+        e.preventDefault()
+
+        const nombre   = document.getElementById("nombre").value.trim();
+        const email    = document.getElementById("email").value.trim();
+        const objetivo = document.getElementById("objetivo").value;
+
+        try {
+            await guardarRegistro({ nombre, email, objetivo });
+            registroForm.reset();
+            alert("¡Gracias por unirte a la comunidad SmartEats!");
+        } catch (error) {
+            console.error("Error guardando registro:", error);
+            alert("Ocurrió un error al registrar tus datos. Intenta de nuevo.");
+        }
+    });
+    }
+});
+
+const favoritosGrid = document.getElementById("favoritos-grid");
+
+const cargarFavoritosUI = async () => {
+    if (!favoritosGrid) return;
+    const resp = await obtenerFavoritos(USER_ID);
+
+    if (!resp.success || !resp.data) {
+        favoritosGrid.innerHTML = `
+        <p class="text-center text-slate-400">
+            Aún no has agregado recetas a favoritos.
+        </p>`;
+        return;
+    }
+
+    const recetas = Object.values(resp.data);
+    cargarRecetas(recetas, favoritosGrid);
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    cargarFavoritosUI();
 });

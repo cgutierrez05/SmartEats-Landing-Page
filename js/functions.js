@@ -27,6 +27,6 @@ const fetchRecetas = async (filtro) => {
             body: error.message
         };
     }
-}
+};
 
 export {fetchRecetas};

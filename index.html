@@ -289,97 +289,105 @@
       </div>
     </section>
 
+    <section id="registro" class="bg-slate-900 py-24">
+      <div class="max-w-4xl mx-auto px-6">
 
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-extrabold text-emerald-300 mb-4">
+            Únete a la Comunidad
+          </h2>
+          <p class="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            Regístrate y recibe tu Guía Gratuita para optimizar tu energía en 7 días.
+            Consejos prácticos, recetas rápidas y hábitos inteligentes para tu día a día.
+          </p>
+        </div>
 
-<section id="registro" class="bg-slate-900 py-24">
-  <div class="max-w-4xl mx-auto px-6">
+        <form id="registro-form"
+              class="bg-white rounded-3xl shadow-2xl border border-slate-200 px-8 py-10 md:px-12 md:py-12 space-y-8">
 
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-emerald-300 mb-4">
-        Únete a la Comunidad
-      </h2>
-      <p class="text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-        Regístrate y recibe tu Guía Gratuita para optimizar tu energía en 7 días.
-        Consejos prácticos, recetas rápidas y hábitos inteligentes para tu día a día.
-      </p>
-    </div>
+          <div>
+            <label for="nombre" class="block text-sm font-semibold text-slate-700 mb-2">
+              Tu Nombre
+            </label>
+            <input
+              type="text"
+              id="nombre"
+              placeholder="Ej: Alex Smith"
+              required
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900
+                    placeholder-slate-400 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
+            />
+          </div>
 
-    <form id="registro-form"
-          class="bg-white rounded-3xl shadow-2xl border border-slate-200 px-8 py-10 md:px-12 md:py-12 space-y-8">
+          <div>
+            <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">
+              Tu Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="ejemplo@correo.com"
+              required
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900
+                    placeholder-slate-400 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
+            />
+          </div>
 
-      <div>
-        <label for="nombre" class="block text-sm font-semibold text-slate-700 mb-2">
-          Tu Nombre
-        </label>
-        <input
-          type="text"
-          id="nombre"
-          placeholder="Ej: Alex Smith"
-          required
-          class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900
-                 placeholder-slate-400 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
-        />
+          <div>
+            <label for="objetivo" class="block text-sm font-semibold text-slate-700 mb-2">
+              ¿Cuál es tu objetivo principal?
+            </label>
+            <select
+              id="objetivo"
+              required
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 bg-white
+                    focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
+            >
+              <option disabled selected>Selecciona una opción...</option>
+              <option value="energia">Aumentar mi energía</option>
+              <option value="tiempo">Comer sano sin perder tiempo</option>
+              <option value="productividad">Mejorar mi productividad</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="pt-4 flex flex-col items-center">
+            <button type="submit" id="boton-enviar"
+                    class="bg-emerald-400 text-slate-900 font-semibold px-10 py-4 rounded-full
+                          hover:bg-emerald-300 transition shadow-md hover:shadow-xl text-lg tracking-wide">
+              ¡Unirme ahora!
+            </button>
+            <p class="text-xs text-slate-600 mt-3 text-center max-w-sm">
+              Solo contenido útil. Sin spam, lo prometemos ✨
+            </p>
+          </div>
+
+        </form>
       </div>
-
-      <div>
-        <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">
-          Tu Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          placeholder="ejemplo@correo.com"
-          required
-          class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900
-                 placeholder-slate-400 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
-        />
-      </div>
-
-      <div>
-        <label for="objetivo" class="block text-sm font-semibold text-slate-700 mb-2">
-          ¿Cuál es tu objetivo principal?
-        </label>
-        <select
-          id="objetivo"
-          required
-          class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 bg-white
-                 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 focus:outline-none transition"
-        >
-          <option disabled selected>Selecciona una opción...</option>
-          <option value="energia">Aumentar mi energía</option>
-          <option value="tiempo">Comer sano sin perder tiempo</option>
-          <option value="productividad">Mejorar mi productividad</option>
-          <option value="otro">Otro</option>
-        </select>
-      </div>
-
-      <div class="pt-4 flex flex-col items-center">
-        <button type="submit" id="boton-enviar"
-                class="bg-emerald-400 text-slate-900 font-semibold px-10 py-4 rounded-full
-                       hover:bg-emerald-300 transition shadow-md hover:shadow-xl text-lg tracking-wide">
-          ¡Unirme ahora!
-        </button>
-        <p class="text-xs text-slate-600 mt-3 text-center max-w-sm">
-          Solo contenido útil. Sin spam, lo prometemos ✨
-        </p>
-      </div>
-
-    </form>
-  </div>
-</section>
+    </section>
 
 
     <!-- favorites section -->
-    <section id="favoritos">
+    <section id="favoritos" class="bg-slate-900 py-20 border-t border-slate-800">
+      <div class="max-w-6xl mx-auto px-6">
 
-      <div class="heading_container">
-        <h2>Mis Recetas Favoritas</h2>
-        <p>Las recetas que has guardado. ¡Vuelve a ellas cuando quieras!</p>
-      </div>
+        <div class="heading_container text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-emerald-300 mb-3">
+            Mis Recetas Favoritas
+          </h2>
+          <p class="text-slate-300 max-w-2xl mx-auto">
+            Las recetas que has guardado. Vuelve a ellas cuando quieras y sigue
+            construyendo tu propia colección SmartEats.
+          </p>
+        </div>
 
-      <div id="favoritos-grid" class="recipe-grid">
+        <div id="favoritos-grid" class="recipe-grid">
+          <!-- Se llena con JS  -->
+        </div>
+
       </div>
     </section>
+
     <!-- end favorites section -->
 
 
