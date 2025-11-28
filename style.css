@@ -171,3 +171,17 @@
   display: block;
   padding: .75rem 0;
 }
+
+.favoritos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.favoritos-grid.centrado {
+  justify-content: center;
+}
+
+.favoritos-grid.centrado .recipe-card {
+  grid-column: 2;
+}

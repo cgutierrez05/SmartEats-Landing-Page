@@ -1,5 +1,5 @@
 import { fetchRecetas } from './functions.js';
-import { guardarRegistro, guardarFavorito, obtenerFavoritos } from "./firebase.js";
+import { guardarRegistro, guardarFavorito, escucharFavoritos } from "./firebase.js";
 
 const getOrCreateUserId = () => {
     let id = localStorage.getItem("smarteatsUserId");
@@ -12,7 +12,7 @@ const getOrCreateUserId = () => {
 
 const USER_ID = getOrCreateUserId();
 
-const cargarRecetas = (recetasArray, contenedor) => {
+const cargarRecetas = (recetasArray, contenedor, mostrarBtnFavorito = true) => {
     contenedor.innerHTML = "";
 
     if (!recetasArray || recetasArray.length === 0) {
@@ -22,13 +22,20 @@ const cargarRecetas = (recetasArray, contenedor) => {
     }
 
     recetasArray.forEach(receta => {
+        const botonFavorito = mostrarBtnFavorito ? `
+            <button class="fav-btn" data-id="${receta.id}" data-title="${receta.title}"
+            data-image="${receta.image}" data-minutes="${receta.readyInMinutes}" data-url="${receta.sourceUrl}">
+                + Favoritos
+            </button>
+        ` : "";
+
         const recipeCard =  `
         <article class="recipe-card">
             <div class="card-img-box">
                 <img src="${receta.image}" alt="${receta.title}">
             </div>
 
-            <div class="card-detail-box">
+            <div class="card-detail-box p-4">
                 <h3>${receta.title}</h3>
                 <p class="recipe-time">
                     ⏱ ${receta.readyInMinutes} min
@@ -38,11 +45,7 @@ const cargarRecetas = (recetasArray, contenedor) => {
                     <a href="${receta.sourceUrl}" target="_blank" class="view-recipe-btn">
                         Ver receta
                     </a>
-
-                    <button class="fav-btn" data-id="${receta.id}" data-title="${receta.title}"
-                    data-image="${receta.image}" data-minutes="${receta.readyInMinutes}" data-url="${receta.sourceUrl}">
-                        + Favoritos
-                    </button>
+                    ${botonFavorito}
                 </div>
             </div>
         </article>`;
@@ -97,6 +100,7 @@ if (recipeGrid) {
       await guardarFavorito(USER_ID, recipe);
       btn.textContent = "Guardado";
       btn.disabled = true;
+      mostrarModalFavorito();
     } catch (error) {
       console.error("Error al guardar favorito:", error);
       alert("No se pudo guardar en favoritos. Intenta de nuevo.");
@@ -104,6 +108,24 @@ if (recipeGrid) {
   });
 }
 
+function mostrarModalFavorito() {
+    const alerta = document.getElementById("favoritos-alerta");
+    const cerrarBtn = document.getElementById("cerrar-modal");
+    const btnVerFavoritos = document.getElementById("btn-ver-favoritos");
+
+    alerta.classList.remove("hidden");
+    alerta.classList.add("flex");
+
+    cerrarBtn.addEventListener("click", () => {
+        alerta.classList.add("hidden");
+        alerta.classList.remove("flex");
+    });
+    
+    btnVerFavoritos.addEventListener("click", () => {
+        alerta.classList.add("hidden");
+        alerta.classList.remove("flex");
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".carousel-item");
@@ -143,24 +165,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const favoritosGrid = document.getElementById("favoritos-grid");
 
-const cargarFavoritosUI = async () => {
-    if (!favoritosGrid) return;
-    const resp = await obtenerFavoritos(USER_ID);
-
-    if (!resp.success || !resp.data) {
-        favoritosGrid.innerHTML = `
-        <p class="text-center text-slate-400">
-            Aún no has agregado recetas a favoritos.
-        </p>`;
-        return;
-    }
-
-    const recetas = Object.values(resp.data);
-    cargarRecetas(recetas, favoritosGrid);
-};
-
 document.addEventListener("DOMContentLoaded", () => {
-    cargarFavoritosUI();
+    if (!favoritosGrid) return;
+
+    escucharFavoritos(USER_ID, (data) => {
+        if (!data) {
+            favoritosGrid.innerHTML = `
+                <p class="text-center text-slate-400">
+                Aún no has agregado recetas a favoritos.
+                </p>`;
+            return;
+        }
+        const recetas = Object.values(data);
+        cargarRecetas(recetas, favoritosGrid, false);
+    });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -168,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navMenu = document.getElementById("menu-pequeno");
     if (menuBtn && navMenu) {
         menuBtn.addEventListener("click", () => {
-        navMenu.classList.toggle("hidden");
+            navMenu.classList.toggle("hidden");
         });
     }
 

@@ -1,13 +1,12 @@
- <!DOCTYPE html>
- <html lang="es">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
-  <title>SmartEats-Landing</title>
-  
- </head>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>SmartEats-Landing</title>
+  </head>
   <body class="bg-slate-900 text-white">
     <header class="fixed top-0 left-0 w-full z-50 bg-slate-900/70">
       <nav id="navbar" class="flex items-center justify-between px-4 md:px-10 py-4 text-white">
@@ -395,7 +394,7 @@
           </p>
         </div>
 
-        <div id="favoritos-grid" class="recipe-grid">
+        <div id="favoritos-grid" class="recipe-grid favoritos-grid>
           <!-- Se llena con JS  -->
         </div>
 
@@ -404,12 +403,35 @@
 
     <!-- end favorites section -->
 
-
     <!-- footer section -->
     <footer>
       <p>&copy; 2025 All Rights Reserved By <a href="https://www.linkedin.com/in/carla-gutierrez-a70b15252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Carla Gutierrez</a></p>
     </footer>
     <!-- end footer section -->
+
+    <!-- Alerta favoritos -->
+    <div id="favoritos-alerta" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
+      <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-xl animate-fade">
+
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">
+          ¡Tu receta se ha guardado exitosamente!
+        </h3>
+
+        <p class="text-slate-600 text-sm mb-6">
+          Puedes revisar todas tus recetas favoritas cuando quieras.
+        </p>
+
+        <div class="flex gap-3 justify-center">
+          <a href="#favoritos" class="bg-emerald-400 text-slate-900 font-semibold px-4 py-2 rounded-full hover:bg-emerald-300 transition">
+            Ver favoritos
+          </a>
+
+          <button id="cerrar-modal" class="border border-slate-300 px-4 py-2 rounded-full text-slate-700 hover:bg-slate-100 transition">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="js/file.js" type="module"></script>
   </body>

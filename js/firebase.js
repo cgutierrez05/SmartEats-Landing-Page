@@ -1,13 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import { getDatabase, ref, set, push, get, child } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import { onValue } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -53,25 +54,13 @@ export const guardarFavorito = async (userId, recipe) => {
 
 };
 
-export const obtenerFavoritos = async (userId) => {
-    try {
-        const favRef = ref(database, `favoritos/${userId}`);
-        const snapshot = await get(favRef);
-        if (!snapshot.exists()) 
-            return {
-                success: false, 
-                message: "No hay favoritos guardados." 
-            };
-        return {
-            success: true, 
-            data: snapshot.val() 
-        };
-
-    } catch (error) {
-        console.error(error);
-        return { 
-            success: false, 
-            message: "Error al obtener favoritos." 
-        };
-    }
+export const escucharFavoritos = (userId, callback) => {
+    const favRef = ref(database, `favoritos/${userId}`);
+    onValue(favRef, (snapshot) => {
+        if (snapshot.exists()) {
+            callback(snapshot.val());
+        } else {
+          callback(null);
+        }
+    });
 };
