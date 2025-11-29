@@ -82,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function mostrarModalFavorito() {
+    const alerta = document.getElementById("favoritos-alerta");
+
     if (alerta) {
         alerta.classList.remove("hidden");
         alerta.classList.add("flex");
@@ -103,34 +105,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    const recipeGrid = document.querySelector("#recetas .recipe-grid");
+
+    if (recipeGrid) {
+        recipeGrid.addEventListener("click", async (e) => {
+            const btn = e.target.closest(".fav-btn");
+            if (!btn) return;
+
+            const recipe = {
+                id: btn.dataset.id,
+                title: btn.dataset.title,
+                image: btn.dataset.image,
+                readyInMinutes: Number(btn.dataset.minutes),
+                sourceUrl: btn.dataset.url,
+            };
+
+            try {
+                const result = await guardarFavorito(USER_ID, recipe);
+                if (result.success) {
+                    btn.textContent = "Guardado";
+                    btn.disabled = true;
+                    mostrarModalFavorito();
+                } else {
+                    console.error("Error al guardar favorito:", resultado.message);
+                    alert("No se pudo guardar en favoritos. Intenta de nuevo.");
+                }
+
+            } catch (error) {
+                console.error("Error al guardar favorito:", error);
+                alert("No se pudo guardar en favoritos. Intenta de nuevo.");
+            }
+        });
+    }
+
 });
 
-const recipeGrid = document.querySelector("#recetas .recipe-grid");
-
-if (recipeGrid) {
-  recipeGrid.addEventListener("click", async (e) => {
-    const btn = e.target.closest(".fav-btn");
-    if (!btn) return;
-
-    const recipe = {
-      id: btn.dataset.id,
-      title: btn.dataset.title,
-      image: btn.dataset.image,
-      readyInMinutes: Number(btn.dataset.minutes),
-      sourceUrl: btn.dataset.url,
-    };
-
-    try {
-      await guardarFavorito(USER_ID, recipe);
-      btn.textContent = "Guardado";
-      btn.disabled = true;
-      mostrarModalFavorito();
-    } catch (error) {
-      console.error("Error al guardar favorito:", error);
-      alert("No se pudo guardar en favoritos. Intenta de nuevo.");
-    }
-  });
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".carousel-item");
