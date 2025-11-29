@@ -81,6 +81,30 @@ document.addEventListener("DOMContentLoaded", () => {
     
 });
 
+function mostrarModalFavorito() {
+    if (alerta) {
+        alerta.classList.remove("hidden");
+        alerta.classList.add("flex");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const alerta = document.getElementById("favoritos-alerta");
+
+    if (alerta) {
+        document.getElementById("cerrar-modal")?.addEventListener("click", () => {
+            alerta.classList.add("hidden");
+            alerta.classList.remove("flex");
+        });
+        
+        document.getElementById("btn-ver-favoritos")?.addEventListener("click", () => {
+            alerta.classList.add("hidden");
+            alerta.classList.remove("flex");
+        });
+    }
+
+});
+
 const recipeGrid = document.querySelector("#recetas .recipe-grid");
 
 if (recipeGrid) {
@@ -106,25 +130,6 @@ if (recipeGrid) {
       alert("No se pudo guardar en favoritos. Intenta de nuevo.");
     }
   });
-}
-
-function mostrarModalFavorito() {
-    const alerta = document.getElementById("favoritos-alerta");
-    const cerrarBtn = document.getElementById("cerrar-modal");
-    const btnVerFavoritos = document.getElementById("btn-ver-favoritos");
-
-    alerta.classList.remove("hidden");
-    alerta.classList.add("flex");
-
-    cerrarBtn.addEventListener("click", () => {
-        alerta.classList.add("hidden");
-        alerta.classList.remove("flex");
-    });
-    
-    btnVerFavoritos.addEventListener("click", () => {
-        alerta.classList.add("hidden");
-        alerta.classList.remove("flex");
-    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
