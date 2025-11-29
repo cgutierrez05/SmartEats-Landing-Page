@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     btn.disabled = true;
                     mostrarModalFavorito();
                 } else {
-                    console.error("Error al guardar favorito:", resultado.message);
+                    console.error("Error al guardar favorito:", result.message);
                     alert("No se pudo guardar en favoritos. Intenta de nuevo.");
                 }
 
